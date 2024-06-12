@@ -10,11 +10,16 @@
 
 # Windows:
 
-You will need on windows ffmpeg.exe 
+You will to download ffmpeg.exe from https://ffmpeg.org/download.html#build-windows
 
 # Linux:
 
-remove `MusicExecutable` variable from the python Script on linux and install ffmpeg from your package manager
+remove `MusicExecutable` variable from the python Script on linux 
+
+and install ffmpeg from your package manager:
+
+https://ffmpeg.org/download.html#build-linux
+
 
 ### Required Files
 
