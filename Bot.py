@@ -48,7 +48,6 @@ ErrorChannel = -1
 for line in lines:
     if "ErrorChannel" in line:
         ErrorChannel = int(line.split("=")[1])
-        print(ErrorChannel)
         break
 
 
