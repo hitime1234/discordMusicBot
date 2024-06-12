@@ -297,7 +297,7 @@ def done(GuildId):
 def nextjob(msg,userid,channelid):
     global CurrentChannel,MessageToSend,ReadyToSend,UserId
     
-    if (ReadyToSend == True and msg.find("<@282224597288615936>") == -1):
+    if (ReadyToSend == True):
         CurrentChannel = channelid
         MessageToSend = msg
         ReadyToSend = False
