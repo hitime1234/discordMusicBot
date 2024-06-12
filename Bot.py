@@ -46,7 +46,6 @@ MessageToSend = "`TSP IS online, Love you all <3`"
 lines = open("OptionalChannels.conf","r").read().split("\n")
 ErrorChannel = -1
 for line in lines:
-    print(line)
     if "ErrorChannel" in line:
         ErrorChannel = int(line.split("=")[1])
         print(ErrorChannel)
