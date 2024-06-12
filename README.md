@@ -31,12 +31,17 @@ Used to hold the token of your discord bot
 `YOURTOKEN`
 
 
+
+
 ## Config.conf
 Used to Store Channel IDs of servers.
 
 # Format
 
 `GUILD:TEXTCHANNELID,GUILD:VOICECHANNELID`
+
+
+
 
 ### OptionalChannels.conf
 Used to send Bot logs to a discord channel.
