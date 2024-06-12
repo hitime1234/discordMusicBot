@@ -38,10 +38,11 @@ Used to send Bot logs to a discord channel.
 
 # Format
 
-`
+```
 msg_dump_channel=INSERTIDHERE
+
 ErrorChannel=INSERTIDHERE
-`
+```
 
 
 
