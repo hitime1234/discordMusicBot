@@ -19,7 +19,7 @@ remove `MusicExecutable` variable from the python Script on linux
 and install ffmpeg from your package manager:
 
 https://ffmpeg.org/download.html#build-linux
-
+ 
 
 ### Required Files
 
