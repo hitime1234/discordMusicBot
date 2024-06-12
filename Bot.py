@@ -347,7 +347,7 @@ ffmpeg_options = {
 
 
 
-@client.tree.command(name="addtoqueue",description="testcommand")
+@client.tree.command(name="addtoqueue",description="Adds to the current queue")
 async def AddToQueue(interaction: discord.Interaction, string: str):
     global Queue,VoiceStore
     #Queue.append(string)
