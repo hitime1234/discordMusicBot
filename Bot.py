@@ -1,3 +1,4 @@
+import time
 import discord
 from discord import FFmpegPCMAudio
 from discord import app_commands
@@ -370,29 +371,39 @@ async def ShowQueue(interaction: discord.Interaction):
     OutputString = QueueString(discord.Object(interaction.guild_id))
     await interaction.response.send_message(OutputString)
 
+
 @client.tree.command(name="playury",description="Plays URY FM Feed")
 async def playury(interaction: discord.Interaction):
     # adds URY FM to the front of the queue
 
     #Queue.insert(0,"https://audio.ury.org.uk/fm")
-    VoiceStore.InsertVoiceQueue(discord.Object(interaction.guild.id),"https://audio.ury.org.uk/fm",0)
 
-    # skips current song
+    try:
+        VoiceStore.InsertVoiceQueue(discord.Object(interaction.guild.id),"https://audio.ury.org.uk/fm",0)
 
-    VoiceStore.GetVoice(discord.Object(interaction.guild.id)).stop()
-    await interaction.response.send_message("Adding URY FM to Queue")
+        # skips current song
+    
+        VoiceStore.GetVoice(discord.Object(interaction.guild.id)).stop()
+        await interaction.response.send_message("Adding URY FM to Queue")
+    except Exception as e:
+        await interaction.response.send_message("Bot isn't connected to Voice Channel. Please use /join to connect to a voice channel")
+
+
 
 @client.tree.command(name="playuryhq",description="Plays URY High Quality Feed")
 async def playuryhq(interaction: discord.Interaction):
-    # adds URY HQ to the front of the queue
+    try:
+        # adds URY HQ to the front of the queue
 
-    #Queue.insert(0,"https://audio.ury.org.uk/live-high")
-    VoiceStore.InsertVoiceQueue(discord.Object(interaction.guild.id),"https://audio.ury.org.uk/live-high",0)
+        #Queue.insert(0,"https://audio.ury.org.uk/live-high")
+        VoiceStore.InsertVoiceQueue(discord.Object(interaction.guild.id),"https://audio.ury.org.uk/live-high",0)
 
 
-    # skips current song
-    VoiceStore.GetVoice(discord.Object(interaction.guild.id)).stop()
-    await interaction.response.send_message("Adding URY High Quality to Queue")
+        # skips current song
+        VoiceStore.GetVoice(discord.Object(interaction.guild.id)).stop()
+        await interaction.response.send_message("Adding URY High Quality to Queue")
+    except Exception as e:
+        await interaction.response.send_message("Bot isn't connected to Voice Channel. Please use /join to connect to a voice channel")
 
 @client.tree.command(name="skipmusic",description="Ends Current Song")
 async def skip(interaction: discord.Interaction):
@@ -427,8 +438,8 @@ async def leave(interaction: discord.Interaction):
     
     #Queue.clear()
     VoiceStore.ClearVoiceQueue(discord.Object(interaction.guild.id))
-
     await VoiceStore.GetVoice(discord.Object(interaction.guild.id)).disconnect()
+    VoiceStore.RunNowRunning(discord.Object(interaction.guild.id))
     VoiceStore.RemoveVoice(discord.Object(interaction.guild.id))
     await interaction.response.send_message("Stopping Playing Now")
 
