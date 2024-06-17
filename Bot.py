@@ -327,10 +327,12 @@ async def type(interaction: discord.Interaction, str: str):
 
 
 from requests import get as getter
-from youtube_dl import YoutubeDL
+#from youtube_dl import YoutubeDL - DEPRECATED
+from yt_dlp import YoutubeDL
 def search(query):
     with YoutubeDL({'format': 'bestaudio', 'noplaylist':'True'}) as ydl:
-        try: getter(query)
+        try: 
+            getter(query)
         except Exception as e:
             print(e)
             info = ydl.extract_info(f"ytsearch: " + query, download=False)['entries'][0]
@@ -459,6 +461,8 @@ async def SetVoiceChannel(interaction: discord.Interaction,channel: discord.Voic
     VoiceChannelListByGuild.update({discord.Object(interaction.channel.guild.id):channel.id})
     WriteServerStore("config.conf",ChannelListByGuild,VoiceChannelListByGuild)
     await interaction.response.send_message("Voice Channel Set to " + channel.name)
+
+
 
 try:
     file = open("Token.txt","r")
